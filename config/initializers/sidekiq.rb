@@ -1,8 +1,8 @@
 require 'sidekiq'
 
-Sidekiq.configure_client do |config|
-  config.redis = { size: 1 }
-end
+redis_url = ENV['REDIS_URL']
+
+
 
 Sidekiq.default_worker_options = {
   'backtrace' => true,

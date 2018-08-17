@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  redis:
+    restart: always
+    image: "redis:alpine"
+    ports:
+     - "6379:6379"
+
+  postgres:
+    image: postgres
+
+  web:
+    build: .
+    volumes:
+      - ./tmp:/tmp
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: "3000"
+      PGHOST: "postgres"
+      PGUSER: "postgres"
+      PGDBNAME: "app"
+    depends_on:
+      - postgres
+      - redis
+
