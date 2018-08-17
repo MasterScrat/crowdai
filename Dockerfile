@@ -1,4 +1,4 @@
-FROM ruby:2.5.0
+FROM ruby:2.5.1
 
 ENV APP_HOME /app
 
